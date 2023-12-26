@@ -3,9 +3,12 @@
 #include <queue>
 #include <fstream>
 #include <gtest/gtest.h>
+
 #include "input.cpp"
 #include "output.cpp"
 #include "findDistances.cpp"
+#include "findGates.cpp"
+#include "buildAdjacencyMatrix.cpp"
 
 // Tests for input
 TEST(MatrixOperationsTest, EmptyInputFile) {
@@ -25,13 +28,13 @@ TEST(MatrixOperationsTest, EmptyInputFile) {
 
 
 //Tests for buildAdjacencyMatrix
-TEST(EmptyLabyrinthTest, Empty) {
-    std::vector<std::vector<int>> labyrinth = { {} };
-    ASSERT_EQ(0, buildAdjacencyMatrix(labyrinth).size());
+TEST(EmptyinputTest, Empty) {
+    std::vector<std::vector<int>> input = { {} };
+    ASSERT_EQ(0, buildAdjacencyMatrix(input).size());
 }
 
 TEST(OneEmptyCageTest, OneEmptyCage) {
-    std::vector<std::vector<int>> labyrinth = {
+    std::vector<std::vector<int>> input = {
         {2147483647},
     };
 
@@ -39,11 +42,11 @@ TEST(OneEmptyCageTest, OneEmptyCage) {
         {0},
     };
 
-    ASSERT_EQ(out, buildAdjacencyMatrix(labyrinth));
+    ASSERT_EQ(out, buildAdjacencyMatrix(input));
 }
 
 TEST(TwoEmptyCagesNearTest, TwoEmptyCagesNear) {
-    std::vector<std::vector<int>> labyrinth = {
+    std::vector<std::vector<int>> input = {
         {2147483647, 2147483647},
     };
 
@@ -52,11 +55,11 @@ TEST(TwoEmptyCagesNearTest, TwoEmptyCagesNear) {
         {1, 0}
     };
 
-    ASSERT_EQ(near, buildAdjacencyMatrix(labyrinth));
+    ASSERT_EQ(near, buildAdjacencyMatrix(input));
 }
 
 TEST(TwoEmptyCagesNotNearTest, TwoEmptyCagesNotNear) {
-    std::vector<std::vector<int>> labyrinth = {
+    std::vector<std::vector<int>> input = {
         {2147483647, -1},
         {-1, 2147483647}
     };
@@ -67,11 +70,11 @@ TEST(TwoEmptyCagesNotNearTest, TwoEmptyCagesNotNear) {
 		{0, 0, 0, 0},
 		{0, 0, 0, 0},
     };
-    ASSERT_EQ(notNear, buildAdjacencyMatrix(labyrinth));
+    ASSERT_EQ(notNear, buildAdjacencyMatrix(input));
 }
 
 TEST(SampleTest, Sample) {
-    std::vector<std::vector<int>> labyrinth = {
+    std::vector<std::vector<int>> input = {
         {2147483647, -1, 0, 2147483647},
         {2147483647, 2147483647, 2147483647, -1},
         {2147483647, -1, 2147483647, -1},
@@ -97,12 +100,12 @@ TEST(SampleTest, Sample) {
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0},
     };
 
-    ASSERT_EQ(out, buildAdjacencyMatrix(labyrinth));
+    ASSERT_EQ(out, buildAdjacencyMatrix(input));
 }
 //Tests for buildAdjacencyMatrix
 
 
-//Tests for findDistances
+//Tests for final output 
 TEST(WallsAndGatesTest, ExampleTest) {
     std::vector<std::vector<int>> input = {
         {2147483647, -1, 0, 2147483647},
@@ -118,8 +121,10 @@ TEST(WallsAndGatesTest, ExampleTest) {
         {0, -1, 3, 4}
     };
 
-    std::vector<std::pair<int, int>> gates; 
-    ASSERT_EQ(output, findDistances(input, gates));
+    std::vector<std::pair<int, int>> gates = findGates(input); // Координаты ворот
+    findDistances(input, gates);
+
+    ASSERT_EQ(output, input);
 } 
 
 TEST(WallsAndGatesTest, ExampleTest2){
@@ -131,8 +136,10 @@ TEST(WallsAndGatesTest, ExampleTest2){
         {-1}
     };
     
-    std::vector<std::pair<int, int>> gates; 
-    ASSERT_EQ(output, findDistances(input, gates));
+    std::vector<std::pair<int, int>> gates = findGates(input); // Координаты ворот
+    findDistances(input, gates);
+
+    ASSERT_EQ(output, input);
 }
 
 TEST(WallsAndGatesTest, NoGateTest) {
@@ -148,8 +155,10 @@ TEST(WallsAndGatesTest, NoGateTest) {
         {-1, -1, -1}
     };
 
-    std::vector<std::pair<int, int>> gates; 
-    ASSERT_EQ(output, findDistances(input, gates));
+    std::vector<std::pair<int, int>> gates = findGates(input); // Координаты ворот
+    findDistances(input, gates);
+
+    ASSERT_EQ(output, input);
 }
 
 TEST(WallsAndGatesTest, NoWallsTest) {
@@ -167,8 +176,10 @@ TEST(WallsAndGatesTest, NoWallsTest) {
         {1, 0, 1, 0}
     };
 
-    std::vector<std::pair<int, int>> gates; 
-    ASSERT_EQ(output, findDistances(input, gates));
+    std::vector<std::pair<int, int>> gates = findGates(input); // Координаты ворот
+    findDistances(input, gates);
+
+    ASSERT_EQ(output, input);
 }
 
 TEST(WallsAndGatesTest, GatesNearby) {
@@ -186,10 +197,12 @@ TEST(WallsAndGatesTest, GatesNearby) {
         {2, 1, 1, 2}
     };
 
-    std::vector<std::pair<int, int>> gates; 
-    ASSERT_EQ(output, findDistances(input, gates));
+    std::vector<std::pair<int, int>> gates = findGates(input); // Координаты ворот
+    findDistances(input, gates);
+
+    ASSERT_EQ(output, input);
 }
-//Tests for findDistances
+//Tests for final output 
 
 
 int main(int argc, char** argv) {

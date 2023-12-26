@@ -2,9 +2,7 @@
 #include <vector>
 
 
-const int WALL = -1;
-const int GATE = 0;
-const int EMPTY = 2147483647;
+
 
 std::vector<std::vector<int>> buildAdjacencyMatrix(const std::vector<std::vector<int>>& labyrinth) {
     int rows = labyrinth.size();

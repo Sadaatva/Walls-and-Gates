@@ -3,6 +3,10 @@
 #include <queue>
 
 
+const int WALL = -1;
+const int GATE = 0;
+const int EMPTY = 2147483647;
+
 void bfs(std::vector<std::vector<int>>& matrix, int startRow, int startCol) {
     int rows = matrix.size();
     int cols = matrix[0].size();
