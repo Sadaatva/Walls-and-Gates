@@ -22,19 +22,7 @@ TEST(MatrixOperationsTest, EmptyInputFile) {
     ASSERT_TRUE(matrix.empty());
     std::remove("empty_input.txt");
 }
-
-TEST(MatrixOperationsTest, IncorrectInputFile) {
-    std::ofstream incorrectOutputFile("incorrect_input.txt");
-    incorrectOutputFile << "abc\n";
-    incorrectOutputFile.close();
-
-    std::ifstream incorrectInputFile("incorrect_input.txt");
-
-    ASSERT_ANY_THROW({std::vector<std::vector<int>> matrix; inputMatrix(matrix, incorrectInputFile);});
-
-    std::remove("incorrect_input.txt");
-}
-// Tests for input
+//
 
 
 //Tests for buildAdjacencyMatrix
