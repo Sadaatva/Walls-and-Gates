@@ -5,8 +5,7 @@
 #include <gtest/gtest.h>
 #include "input.cpp"
 #include "output.cpp"
-#include "buildAdjacencyMatrix.cpp"
-
+#include "findDistances.cpp"
 
 // Tests for input
 TEST(MatrixOperationsTest, EmptyInputFile) {
@@ -22,7 +21,7 @@ TEST(MatrixOperationsTest, EmptyInputFile) {
     ASSERT_TRUE(matrix.empty());
     std::remove("empty_input.txt");
 }
-//
+// Tests for input
 
 
 //Tests for buildAdjacencyMatrix
@@ -103,7 +102,8 @@ TEST(SampleTest, Sample) {
 //Tests for buildAdjacencyMatrix
 
 
-/*TEST(WallsAndGatesTest, ExampleTest) {
+//Tests for findDistances
+TEST(WallsAndGatesTest, ExampleTest) {
     std::vector<std::vector<int>> input = {
         {2147483647, -1, 0, 2147483647},
         {2147483647, 2147483647, 2147483647, -1},
@@ -118,8 +118,8 @@ TEST(SampleTest, Sample) {
         {0, -1, 3, 4}
     };
 
-    ...(input);
-    ASSERT_EQ(input, output);
+    std::vector<std::pair<int, int>> gates; 
+    ASSERT_EQ(output, findDistances(input, gates));
 } 
 
 TEST(WallsAndGatesTest, ExampleTest2){
@@ -131,8 +131,8 @@ TEST(WallsAndGatesTest, ExampleTest2){
         {-1}
     };
     
-    ...(input);
-    ASSERT_EQ(input, output);
+    std::vector<std::pair<int, int>> gates; 
+    ASSERT_EQ(output, findDistances(input, gates));
 }
 
 TEST(WallsAndGatesTest, NoGateTest) {
@@ -148,9 +148,8 @@ TEST(WallsAndGatesTest, NoGateTest) {
         {-1, -1, -1}
     };
 
-    ...(input);
-
-    ASSERT_EQ(input, output);
+    std::vector<std::pair<int, int>> gates; 
+    ASSERT_EQ(output, findDistances(input, gates));
 }
 
 TEST(WallsAndGatesTest, NoWallsTest) {
@@ -168,20 +167,9 @@ TEST(WallsAndGatesTest, NoWallsTest) {
         {1, 0, 1, 0}
     };
 
-    ...(input);
-    ASSERT_EQ(input, output);
+    std::vector<std::pair<int, int>> gates; 
+    ASSERT_EQ(output, findDistances(input, gates));
 }
-
-TEST(WallsAndGatesTest, SizeTest) {
-    const int rows = 251;
-    const int cols = 251;
-    std::vector<std::vector<int>> sizeplus(rows, std::vector<int>(cols, 2147483647));
-
-    ASSERT_ANY_THROW(...(sizeplus));
-}
-
-#include <gtest/gtest.h>
-#include "solution.h"  // Подключите ваш файл с реализацией алгоритма
 
 TEST(WallsAndGatesTest, GatesNearby) {
     std::vector<std::vector<int>> input = {
@@ -192,38 +180,19 @@ TEST(WallsAndGatesTest, GatesNearby) {
     };
 
     std::vector<std::vector<int>> output = {
-        {1, 1, 1, 1},
+        {2, 1, 1, 2},
         {1, 0, 0, 1},
         {1, 0, 0, 1},
-        {1, 1, 1, 1}
+        {2, 1, 1, 2}
     };
 
-    ...(input);
-    ASSERT_EQ(inputMatrix, output);
-}*/
-
+    std::vector<std::pair<int, int>> gates; 
+    ASSERT_EQ(output, findDistances(input, gates));
+}
+//Tests for findDistances
 
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
-
-    std::ifstream inputFile("input.txt");
-    std::ofstream outputFile("output.txt");
-
-    if (!inputFile.is_open() || !outputFile.is_open()) {
-        std::cerr << "Not open" << std::endl;
-        return 1;
-    }
-
-    std::vector<std::vector<int>> matrix;
-    inputMatrix(matrix, inputFile);
-
-    outputFile << "Result:\n";
- //   outputMatrix(..., outputFile);
-
-    inputFile.close();
-    outputFile.close();
-
-    return 0;
 }
