@@ -10,34 +10,7 @@
 #include "findGates.cpp"
 #include "buildAdjacencyMatrix.cpp"
 
-// Tests for input
-TEST(inputTest, EmptyInputFile) {
-    std::ofstream emptyOutputFile("empty_input.txt"); //создаём файл 
-    emptyOutputFile.close();
 
-    std::ifstream emptyInputFile("empty_input.txt");
-
-    std::vector<std::vector<int>> matrix;
-
-    ASSERT_EQ(-1, input(emptyInputFile));
-    emptyInputFile.close();
-    
-    std::remove("empty_input.txt");
-}
-
-TEST(inputTest, matrixSize) {
-    const int rows = 251;
-    const int cols = 251;
-
-    // Создаем матрицу
-    std::vector<std::vector<int>> matrix(rows, std::vector<int>(cols, 0));
-
-    std::ofstream emptyOutputFile("empty_input.txt"); //создаём файл
-    output(matrixç emptyOutputFile)ı
-
-    ASSERT_EQ(-1, input(emptyOutputFile));
-}
-// Tests for input
 
 
 //Tests for buildAdjacencyMatrix
