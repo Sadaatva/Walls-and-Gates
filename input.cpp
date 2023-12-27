@@ -28,11 +28,3 @@ std::vector<std::vector<int>> input(const std::string& filename) {
     file.close();
     return matrix;
 }
-
-int main() {
-    std::string filename = "example.txt"; // Укажите имя вашего файла
-
-    std::vector<std::vector<int>> myMatrix = readDataFromFile(filename);
-
-    return 0;
-}
