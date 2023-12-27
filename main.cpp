@@ -193,5 +193,16 @@ TEST(WallsAndGatesTest, GatesNearby) {
 
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
+
+    std::vector<std::vector<int>> labyrinth = input("input.txt");
+
+    std::vector<std::pair<int, int>> gates = findGates(labyrinth); // Координаты ворот
+    findDistances(labyrinth, gates);
+
+    std::ofstream OutputFile("output.txt");
+
+
+    output(labyrinth, OutputFile);
+
     return RUN_ALL_TESTS();
 }
