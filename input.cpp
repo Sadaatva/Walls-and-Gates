@@ -1,36 +1,39 @@
 #include <iostream>
 #include <vector>
-#include <queue>
+#include <sstream>
 #include <fstream>
-//#include "input.h"
 
-void inputMatrix(std::vector<std::vector<int>>& matrix, std::ifstream& input) {
-    int rows, cols;
-    
-    if (!(input >> rows >> cols)) {
-        std::cerr << "Error" << "\n";
-        return;
-    }
-    
-    if (rows <= 0 || cols <= 0 || rows > 250 || cols > 250) {
-        std::cerr << "Error" << "\n";
-        return;
+std::vector<std::vector<int>> readDataFromFile(const std::string& filename) {
+    std::ifstream file(filename);
+
+    if (!file.is_open()) {
+        std::cerr << "Error: Unable to open file " << filename << std::endl;
+        return {};
     }
 
-    matrix.resize(rows, std::vector<int>(cols));
+    std::vector<std::vector<int>> matrix;
+    std::string line;
 
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            if (!(input >> matrix[i][j])) {
-                std::cerr << "Error" << "\n";
-                return;
-            }
+    while (std::getline(file, line)) {
+        std::vector<int> row;
+        std::istringstream iss(line);
 
-            if (matrix[i][j] != -1 && matrix[i][j] != 0 && matrix[i][j] != 2147483647) {
-                std::cerr << "Error" << std::endl;
-                return;
-            }
+        int value;
+        while (iss >> value) {
+              row.push_back(value);
         }
+        
+        matrix.push_back(row);
     }
+
+    file.close();
+    return matrix;
 }
 
+int main() {
+    std::string filename = "example.txt";
+
+    std::vector<std::vector<int>> myMatrix = readDataFromFile(filename);
+
+    return 0;
+}
