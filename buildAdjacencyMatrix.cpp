@@ -3,10 +3,12 @@
 
 // WALL = -1;
 
-
-// @brief Build the adjacency matrix for a labyrinth.
-// @param labyrinth The input labyrinth matrix.
-// @return The adjacency matrix representing connections between cells.
+/**
+ * @brief Build the adjacency matrix for a labyrinth.
+ *
+ * @param labyrinth The input labyrinth matrix.
+ * @return The adjacency matrix representing connections between cells.
+ */
  
 std::vector<std::vector<int>> buildAdjacencyMatrix(const std::vector<std::vector<int>>& labyrinth) {
     // Get the number of rows and columns in the labyrinth
