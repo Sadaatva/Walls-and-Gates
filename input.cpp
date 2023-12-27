@@ -3,7 +3,7 @@
 #include <sstream>
 #include <fstream>
 
-std::vector<std::vector<int>> readDataFromFile(const std::string& filename) {
+std::vector<std::vector<int>> input(const std::string& filename) {
     std::ifstream file(filename);
 
     if (!file.is_open()) {
@@ -36,7 +36,7 @@ std::vector<std::vector<int>> readDataFromFile(const std::string& filename) {
     // Check for an empty matrix
     if (matrix.empty()) {
         std::cerr << "Error: Empty matrix in file " << filename << std::endl;
-        return { };
+        return {  };
     }
 
     // Check for matrix size exceeding 250x250
