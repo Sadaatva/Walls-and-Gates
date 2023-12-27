@@ -30,10 +30,3 @@ std::vector<std::vector<int>> readDataFromFile(const std::string& filename) {
     return matrix;
 }
 
-int main() {
-    std::string filename = "example.txt";
-
-    std::vector<std::vector<int>> myMatrix = readDataFromFile(filename);
-
-    return 0;
-}
