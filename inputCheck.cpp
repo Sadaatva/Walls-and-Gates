@@ -7,6 +7,11 @@
 int inputCheck(std::vector<std::vector<int>>& matrix, std::ifstream& input) {
     int rows, cols;
 
+    if (!(input >> rows >> cols)) {
+        std::cerr << "Error" << "\n";
+        return -1;
+    }
+
     if (rows <= 0 || cols <= 0 || rows > 250 || cols > 250) {
         std::cerr << "Error" << "\n";
         return -1;
