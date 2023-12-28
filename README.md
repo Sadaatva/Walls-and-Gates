@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="gate.png" />
+</p>
 # Labyrinth Distance Calculator
 
 This program calculates the distance from each empty cell in a labyrinth to the nearest gate using breadth-first search (BFS). The labyrinth is represented as a matrix, where each cell can have one of three values:
