@@ -128,7 +128,7 @@ It iterates through each cell in the labyrinth, skipping walls, and updates the 
    The `bfs` function performs breadth-first search (BFS) starting from a given point in the labyrinth. 
    It uses a queue to traverse neighboring cells and a 2D boolean vector to track visited cells during BFS.
 
-   
+   ![bfs](bfs.gif)
    ```cpp
 // Get the input matrix representing the labyrinth
 void bfs(std::vector<std::vector<int>>& matrix, int startRow, int startCol) { 
