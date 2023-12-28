@@ -13,7 +13,7 @@ This program calculates the distance from each empty cell in a labyrinth to the 
 ## Files
 
 1. **buildAdjacencyMatrix.cpp**
-   - Defines a function to build the adjacency matrix for the labyrinth, representing connections between cells.
+   - Defines a function to build the adjacency matrix for the labyrinth, representing connections between cells. Time complexity of this function is O(n
 
 2. **findDistances.cpp**
    - Implements BFS to find distances from gates to all reachable cells.
@@ -32,6 +32,29 @@ This program calculates the distance from each empty cell in a labyrinth to the 
 
 7. **main.cpp**
    - Entry point for the program. Reads the labyrinth from "input.txt", finds gates and distances, outputs the result to "output.txt," and runs unit tests.
+## Time complexity
+
+The time complexity of the solution involves two primary components: building the adjacency matrix and the Breadth-First Search (BFS) algorithm used to calculate distances from gates to all reachable cells.
+
+### Building the Adjacency Matrix Time Complexity
+
+The function `buildAdjacencyMatrix` constructs the adjacency matrix, representing connections between cells in the labyrinth. The time complexity of this operation is O(m * n), where m is the number of rows and n is the number of columns in the labyrinth.
+
+The nested loops iterate through each cell in the labyrinth, and for each cell, the function checks neighboring cells to establish connections. The number of iterations is proportional to the size of the labyrinth (m * n), resulting in a time complexity of O(m * n) for building the adjacency matrix.
+
+### BFS Time Complexity
+
+The BFS algorithm has a time complexity of O(V + E), where V is the number of vertices (cells in the labyrinth) and E is the number of edges (connections between cells). In the worst case, the number of vertices is proportional to the size of the labyrinth (m * n).
+
+Considering the worst-case scenario, where every cell is reachable and there are no obstacles, the overall time complexity for BFS can be approximated as O(m * n).
+
+### Overall Time Complexity
+
+The overall time complexity of the program is influenced by both the construction of the adjacency matrix and the BFS operations. If there are G gates in the labyrinth, the overall time complexity can be expressed as O(G * (m * n)), where G is the number of gates.
+
+It's important to note that the complexity analysis assumes a relatively uniform labyrinth structure and the absence of additional operations with higher time complexity.
+
+#
 
 ## Function Explanations
 
