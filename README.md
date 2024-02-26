@@ -198,13 +198,22 @@ std::vector<std::vector<int>> input(const std::string& filename) { // Get the na
 ## How to Use
 
 1. Clone repository
-   ```bash
-   git clone https://github.com/Sadaatva/Walls-and-Gates.git:Walls-and-Gates
-   ```
+ ```bash
+ git clone https://github.com/Sadaatva/Walls-and-Gates.git Walls-and-Gates
+ ```
 2. Build it via Cmake
-3. Ensure you have a file named "input.txt" containing the labyrinth matrix.
-4. Run the compiled executable.
-5. View the result in the "output.txt" file.
+  ```bash
+ git clone https://github.com/Sadaatva/Walls-and-Gates.git <FolderName/subfolderName>
+ cd <FolderName>/
+ mkdir Build
+ cd Build
+ cmake ../<subfolderName>
+ cmake --build .
+  ```
+  
+4. Ensure you have a file named "input.txt" containing the labyrinth matrix.
+5. Run the compiled executable.
+6. View the result in the "output.txt" file.
 
 ## Unit Tests
 
