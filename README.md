@@ -13,7 +13,7 @@ This program calculates the distance from each empty cell in a labyrinth to the 
 ## Files
 
 1. **buildAdjacencyMatrix.cpp**
-   - Defines a function to build the adjacency matrix for the labyrinth, representing connections between cells. Time complexity of this function is O(n
+   - Defines a function to build the adjacency matrix for the labyrinth, representing connections between cells.
 
 2. **findDistances.cpp**
    - Implements BFS to find distances from gates to all reachable cells.
